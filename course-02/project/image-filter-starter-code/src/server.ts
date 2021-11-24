@@ -1,6 +1,6 @@
 import express, { Request, Response } from "express";
 import bodyParser from "body-parser";
-import { filterImageFromURL, deleteLocalFiles } from "./util/util";
+import { filterImageFromURL, deleteLocalFile } from "./util/util";
 
 (async () => {
   // Init the Express application
@@ -61,7 +61,7 @@ import { filterImageFromURL, deleteLocalFiles } from "./util/util";
   function handleResponse(res: express.Response, filePath: any) {
     return res.sendFile(filePath, function () {
       //delete the temporary image after sending the response to the client
-      deleteLocalFiles(filePath);
+      deleteLocalFile(filePath);
     });
   }
 
